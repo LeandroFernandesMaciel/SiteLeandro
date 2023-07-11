@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UFC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<header>
+  <a href="index.html"> Início </a>
+  <a href="PS4.html"> PS4 </a>
+  <a href="PS5.html"> PS5 </a>
+  <a href="sobre.html"> Sobre </a>
+</header>
+
+<!-- Begin Page Content -->
+<div class="container-fluid" >
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Fale conosco, Aba seu coração !</h1>
+  <!--//<p class="mb-4"> Nos conte tudo! <a target="_blank"</a>//-->
+  <p class="mb-4"> Nos conte tudo! <a target="_blank">Abra seu coração!</a>
+
+
+    <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tabela de usuários</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <td>.</td>
+            <td>.</td>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr th:each="user:${users}" xmlns:th="http://www.w3.org/1999/xhtml">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.cpf}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.address}"></td>
+            <td> <a th:href="@{'/usuarios/' + ${user.id}}" class="btn btn-warning">Alterar</a> </td>
+            <td> <a th:href="@{/usuarios/delete/__${user.id}__}" onclick="return confirm('Tem certeza que deseja excluir o registro?')" class="btn btn-danger">Excluir</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid  -->
+</div>
+<!-- End of Main Content -->
+<div th:replace="shared/footer" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+</body>
+
+
+</html>
